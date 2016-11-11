@@ -19,6 +19,71 @@
 <h2>Numbers Of Classmates: {{numOfStudents}}</h2>
 <button (click)="chat()"><a href="{{chatUrl}}">Chat Room</a></button>
 
+<!--><div class="col-lg-6"><-->
+
+<form role="form">
+
+ <div class="form-group">
+
+    <label>Search Friends By</label>
+
+    <div class="checkbox">
+
+        <label>
+        Nationality
+            <select class="selectpicker" [(ngModel)]="model.majorInfo" name="majorInfo" required>
+                <option *ngFor="let major of majors" [ngValue]="major">
+                    {{major.Abbreviation}}
+                </option>
+            </select>
+
+        </label>
+
+        <label>
+        Language
+            <select class="selectpicker" [(ngModel)]="model.majorInfo" name="majorInfo" required>
+                <option *ngFor="let major of majors" [ngValue]="major">
+                    {{major.Abbreviation}}
+                </option>
+            </select>
+
+        </label>
+
+        <label>
+        Hobby
+            <select class="selectpicker" [(ngModel)]="model.majorInfo" name="majorInfo" required>
+                <option *ngFor="let major of majors" [ngValue]="major">
+                    {{major.Abbreviation}}
+                </option>
+            </select>
+
+        </label>
+
+        
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+<div class = "form-group"> 
+
+    <button formaction="friendresult.html">Search</button>
+
+</div>
+
+
+
+</form>
+
+<!--> </div><-->
+
+
 <div class="list-group">
     <button class="list-group-item" *ngFor="let student of studentList">
         {{student.userName}}

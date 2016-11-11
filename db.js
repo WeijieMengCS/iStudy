@@ -8,7 +8,7 @@ var db = {};
 var sequelize;
 
 // set debug as 1 to init db every time server restarts otherwise set debug as 0
-var debug = 0;
+var debug = 1;
 
 /*****************************************************
  * 				Connect to DB

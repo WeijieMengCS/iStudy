@@ -570,7 +570,7 @@ var filterByNHL = function (res, student_ids, preference, possible_friends) {
 									// filter by language
 									getProfileByHL(profiles, preference, profileByNHL)
 										.then(function () {
-											getUserNames(profileByNHL, possible_friends)
+											getUsers(profileByNHL, possible_friends)
 												.then(function () {
 													res.status(200).send(possible_friends);
 												});
@@ -613,7 +613,7 @@ var filterByNationAndHobby = function (res, student_ids, preference, possible_fr
 									// filter by language
 									getProfileByHobby(profiles, preference.hobby, profileByNH)
 										.then(function () {
-											getUserNames(profileByNH, possible_friends)
+											getUsers(profileByNH, possible_friends)
 												.then(function () {
 													res.status(200).send(possible_friends);
 												});
@@ -656,7 +656,7 @@ var filterByNationAndLanguage = function (res, student_ids, preference, possible
 									// filter by language
 									getProfileByLanguage(profiles, preference.language, profileByNL)
 										.then(function () {
-											getUserNames(profileByNL, possible_friends)
+											getUsers(profileByNL, possible_friends)
 												.then(function () {
 													res.status(200).send(possible_friends);
 												});
@@ -698,7 +698,7 @@ var filterByHobbyAndLanguage = function (res, student_ids, preference, possible_
 									// filter by language and hobby
 									getProfileByHL(profiles, preference, profileByHL)
 										.then(function () {
-											getUserNames(profileByHL, possible_friends)
+											getUsers(profileByHL, possible_friends)
 												.then(function () {
 													res.status(200).send(possible_friends);
 												});
@@ -740,7 +740,7 @@ var filterByLanguage = function (res, student_ids, preference, possible_friends)
 									// filter by language
 									getProfileByLanguage(profiles, preference.language, profileByLanguage)
 										.then(function () {
-											getUserNames(profileByLanguage, possible_friends)
+											getUsers(profileByLanguage, possible_friends)
 												.then(function () {
 													res.status(200).send(possible_friends);
 												});
@@ -782,7 +782,7 @@ var filterByHobby = function (res, student_ids, preference, possible_friends) {
 									// filter by hobby
 									getProfileByHobby(profiles, preference.hobby, profileByHobby)
 										.then(function () {
-											getUserNames(profileByHobby, possible_friends)
+											getUsers(profileByHobby, possible_friends)
 												.then(function () {
 													res.status(200).send(possible_friends);
 												});
@@ -821,7 +821,7 @@ var filterByNation = function (res, student_ids, preference, possible_friends) {
 						})
 							.then(function (profiles) {
 								if (profiles) {
-									getUserNames(profiles, possible_friends)
+									getUsers(profiles, possible_friends)
 										.then(function () {
 											res.status(200).send(possible_friends);
 										});
@@ -992,7 +992,7 @@ var getProfileIds = function (students, profile_ids) {
  * @param profiles
  * @param possibleFriends
  */
-var getUserNames = function (profiles, possibleFriends) {
+var getUsers = function (profiles, possibleFriends) {
 	return new Promise(function (resolve, reject) {
 		var count = 0;
 		var len = profiles.length;
@@ -1000,7 +1000,7 @@ var getUserNames = function (profiles, possibleFriends) {
 			profile.getUser().then(function (user) {
 				if (user){
 					count++;
-					possibleFriends.push({user: user.userName});
+					possibleFriends.push(user);
 					resolve();
 				}
 			})
